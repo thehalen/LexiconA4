@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31727.386
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LexiconA4", "LexiconA4\LexiconA4.csproj", "{09E6A125-50C0-47D5-A615-936AFF36DA11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoItTest", "TodoItTest\TodoItTest.csproj", "{A92B35AD-E707-4EC9-B388-EA7BCB1657B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{09E6A125-50C0-47D5-A615-936AFF36DA11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09E6A125-50C0-47D5-A615-936AFF36DA11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09E6A125-50C0-47D5-A615-936AFF36DA11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A92B35AD-E707-4EC9-B388-EA7BCB1657B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A92B35AD-E707-4EC9-B388-EA7BCB1657B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A92B35AD-E707-4EC9-B388-EA7BCB1657B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A92B35AD-E707-4EC9-B388-EA7BCB1657B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
