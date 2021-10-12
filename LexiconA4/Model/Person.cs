@@ -12,7 +12,7 @@ namespace LexiconA4.Model
         public Person(int personId, string firstName, string lastName)
         {
             this.personId = personId;
-            if (!String.IsNullOrWhiteSpace(firstName)) 
+            if (!String.IsNullOrWhiteSpace(firstName))
             {
                 this.firstName = firstName;
             }
@@ -32,6 +32,5 @@ namespace LexiconA4.Model
             }
         }
     }
-
 
 }

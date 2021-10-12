@@ -5,9 +5,10 @@ using LexiconA4.Model;
 
 namespace TodoItTest
 {
-    public class LA3
+    public class PersonClassShouldConsider
     {
         [Theory]
+        [Trait("Class", "Person")] //not like Unit can sort by class anyway... but the imagination is sorely lacking at this point
         [InlineData(null, "")]
         [InlineData(null, "Nullsoft")]
         [InlineData("Adam", "")]
@@ -23,9 +24,10 @@ namespace TodoItTest
             });
             Assert.IsType<ArgumentIsNullOrWhiteSpaceException>(exception);
         }
-
+                
         ///test for duplicate ID
 
-
     }
+
+
 }
