@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31727.386
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LexiconA4", "LexiconA4\LexiconA4.csproj", "{09E6A125-50C0-47D5-A615-936AFF36DA11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LexiconA4", "LexiconA4\LexiconA4.csproj", "{09E6A125-50C0-47D5-A615-936AFF36DA11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoItTest", "TodoItTest\TodoItTest.csproj", "{A92B35AD-E707-4EC9-B388-EA7BCB1657B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestA4", "UnitTestA4\UnitTestA4.csproj", "{62232998-FCC3-47C2-BB7E-F85E945268A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{09E6A125-50C0-47D5-A615-936AFF36DA11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09E6A125-50C0-47D5-A615-936AFF36DA11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09E6A125-50C0-47D5-A615-936AFF36DA11}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A92B35AD-E707-4EC9-B388-EA7BCB1657B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A92B35AD-E707-4EC9-B388-EA7BCB1657B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A92B35AD-E707-4EC9-B388-EA7BCB1657B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A92B35AD-E707-4EC9-B388-EA7BCB1657B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62232998-FCC3-47C2-BB7E-F85E945268A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62232998-FCC3-47C2-BB7E-F85E945268A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62232998-FCC3-47C2-BB7E-F85E945268A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62232998-FCC3-47C2-BB7E-F85E945268A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

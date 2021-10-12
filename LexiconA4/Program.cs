@@ -10,7 +10,9 @@ namespace LexiconA4
         }
     }
 
-
+    /// <summary>
+    /// Because we don't want any string.WS or NULL values in our Garden of Eden
+    /// </summary>
     public class ArgumentIsNullOrWhiteSpaceException : Exception
     {
         public ArgumentIsNullOrWhiteSpaceException()

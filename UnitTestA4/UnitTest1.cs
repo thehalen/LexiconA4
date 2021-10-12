@@ -16,7 +16,7 @@ namespace TodoItTest
         [InlineData(null, null)]
         [InlineData("", "")]
         public void ArgumentIsNullOrWhiteSpaceException(string firstName, string lastName)
-        {            
+        {
             Exception exception = Assert.Throws<ArgumentIsNullOrWhiteSpaceException>(() =>
             {
                 Person result = new Person(1, firstName, lastName);
@@ -24,8 +24,12 @@ namespace TodoItTest
             });
             Assert.IsType<ArgumentIsNullOrWhiteSpaceException>(exception);
         }
-                
+
         ///test for duplicate ID
+        ///
+
+
+
 
     }
 
