@@ -7,7 +7,7 @@ namespace LexiconA4.Model
     public class Person
     {
         private readonly int _personId;
-        private readonly string _firstName, _lastName;
+        private  string _firstName, _lastName;
 
         public Person(int personId, string firstName, string lastName)
         {
@@ -20,12 +20,12 @@ namespace LexiconA4.Model
         public string FirstName
         {
             get => _firstName;
-            init => _firstName = Tools.SafeString(value);
+            set => _firstName = Tools.SafeString(value);
         }
         public string LastName
         {
             get => _lastName;
-            init => _lastName = Tools.SafeString(value);
+            set => _lastName = Tools.SafeString(value);
         }
     }
 }

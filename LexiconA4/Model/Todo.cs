@@ -9,10 +9,10 @@ namespace LexiconA4.Model
 {
     public class Todo
     {   
-        private readonly int todoID;
-        private string descripion;
-        private bool done;
-        private Person assignee;
+        private readonly int _todoID;
+        private string _descripion;
+        private bool _done;
+        private Person _assignee;
         /// <summary>
         /// 
         /// </summary>
@@ -20,10 +20,10 @@ namespace LexiconA4.Model
         /// <param name="descripion"></param>
         public Todo(int todoID, string descripion)
         {
-            this.todoID = todoID;
-            this.descripion = SafeString(descripion);
+            this._todoID = todoID;
+            this._descripion = SafeString(descripion);
         }
 
-        public int TodoID => todoID;
+        public int TodoID => _todoID;
     }
 }
