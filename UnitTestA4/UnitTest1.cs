@@ -69,7 +69,7 @@ namespace TodoItTest
     public class PersonSequencerClassShouldConsider
     {
         [Fact]
-        [Trait("Class","PersonSequencer")]
+        [Trait("Class", "PersonSequencer")]
         public static void IncrementID()
         {
             int i = 0;
@@ -83,6 +83,28 @@ namespace TodoItTest
             PersonSequencer.reset();
 
             i = PersonSequencer.nextPersonId();
+            Assert.Equal(0, i);
+        }
+
+    }
+
+    public class TodoSequencerClassShouldConsider
+    {
+        [Fact]
+        [Trait("Class", "TodoSequencer")]
+        public static void IncrementID()
+        {
+            int i = 0;
+            i = TodoSequencer.nextTodoId();
+            Assert.Equal(0, i);
+            i = TodoSequencer.nextTodoId();
+            Assert.Equal(1, i);
+            i = TodoSequencer.nextTodoId();
+            Assert.Equal(2, i);
+
+            TodoSequencer.reset();
+
+            i = TodoSequencer.nextTodoId();
             Assert.Equal(0, i);
         }
 
