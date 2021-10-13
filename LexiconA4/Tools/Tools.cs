@@ -18,5 +18,6 @@ namespace LexiconA4
                 throw new ArgumentIsNullOrWhiteSpaceException(nameof(name));
             }
         }
+
     }
 }

@@ -109,4 +109,26 @@ namespace TodoItTest
         }
 
     }
+
+    public class PeopleClassShouldConsider
+    {
+        [Fact]
+        [Trait("Class", "People")]
+        public static void AddGenericPerson()
+        {
+            People people = new People();
+            Assert.Equal(0, people.Size());
+            Person pers = people.AddGenericPerson();
+            Assert.Equal(1, people.Size());
+
+            Assert.Equal("Hacke", people.FindById(1).FirstName);
+            Assert.Equal("Hackspett", pers.LastName);
+
+            Assert.Equal(people.Size(), people.FindAll().Length);
+            people.Clear();
+            Assert.Equal(0, people.Size());
+        }
+
+
+    }
 }
