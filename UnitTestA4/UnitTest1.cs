@@ -3,6 +3,7 @@ using Xunit;
 using LexiconA4;
 using LexiconA4.Model;
 using static LexiconA4.Exceptions;
+using LexiconA4.Data;
 
 namespace TodoItTest
 {
@@ -65,8 +66,25 @@ namespace TodoItTest
 
     }
 
+    public class PersonSequencerClassShouldConsider
+    {
+        [Fact]
+        [Trait("Class","PersonSequencer")]
+        public static void IncrementID()
+        {
+            int i = 0;
+            i = PersonSequencer.nextPersonId();
+            Assert.Equal(0, i);
+            i = PersonSequencer.nextPersonId();
+            Assert.Equal(1, i);
+            i = PersonSequencer.nextPersonId();
+            Assert.Equal(2, i);
 
+            PersonSequencer.reset();
 
+            i = PersonSequencer.nextPersonId();
+            Assert.Equal(0, i);
+        }
 
-
+    }
 }
