@@ -128,7 +128,25 @@ namespace TodoItTest
             people.Clear();
             Assert.Equal(0, people.Size());
         }
+    }
 
+    public class TodoItemsClassShouldConsider
+    {
+        [Fact]
+        [Trait("Class", "TodoItems")]
+        public static void AddGenericTodo()
+        {
+            TodoItems todoArr = new TodoItems();
+            Assert.Equal(0, todoArr.Size());
+            Todo todo = todoArr.AddGenericTodo();
+            Assert.Equal(1, todoArr.Size());
 
+            //Assert.Equal("Hacke", todoArr.FindById(1));
+            //Assert.Equal("Hackspett", todo.LastName);
+
+            Assert.Equal(todoArr.Size(), todoArr.FindAll().Length);
+            todoArr.Clear();
+            Assert.Equal(0, todoArr.Size());
+        }
     }
 }
