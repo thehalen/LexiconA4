@@ -50,6 +50,21 @@ namespace LexiconA4.Data
             people[people.Length-1] = person;
         }
 
+        /// <summary>
+        /// Removes a person from the array
+        /// </summary>
+        /// <param name=""></param>
+        public void RemoveFromArray(Person person)
+        {
+            for (int i = 0; i < people.Length - 1; i++)
+            {
+                if (people[i] == person)
+                {
+                    people = people.Where((source, index) => index != i).ToArray();
+                }
+            }
+        }
+
 
         public void Clear()
         {

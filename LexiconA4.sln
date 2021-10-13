@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.31727.386
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LexiconA4", "LexiconA4\LexiconA4.csproj", "{09E6A125-50C0-47D5-A615-936AFF36DA11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestA4", "UnitTestA4\UnitTestA4.csproj", "{62232998-FCC3-47C2-BB7E-F85E945268A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestA4", "UnitTestA4\UnitTestA4.csproj", "{62232998-FCC3-47C2-BB7E-F85E945268A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{45A3AD12-D3FE-4E9B-8A24-F52FE43E18B6}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

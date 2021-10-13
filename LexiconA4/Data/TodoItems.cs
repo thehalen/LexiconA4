@@ -41,13 +41,28 @@ namespace LexiconA4.Data
         }
 
         /// <summary>
-        /// Adds a char to the first free slot in the guesses array
+        /// Adds a todo to the first free slot in the specified array
         /// </summary>
-        /// <param name="ch"></param>
+        /// <param name=""></param>
         public void AddToArray(ref Todo[] arr, Todo todo)
         {
             Array.Resize(ref arr, arr.Length + 1);
             arr[arr.Length - 1] = todo;
+        }
+        
+        /// <summary>
+        /// Removes a todo from the array
+        /// </summary>
+        /// <param name=""></param>
+        public void RemoveFromArray(Todo todo)
+        {
+            for (int i=0; i<todoArr.Length-1; i++)
+            {
+                if (todoArr[i] == todo)
+                {
+                    todoArr = todoArr.Where((source, index) => index != i).ToArray();
+                }
+            }
         }
 
 
@@ -128,6 +143,9 @@ namespace LexiconA4.Data
             }
             return found;
         }
+
+
+
     }
 }
 
