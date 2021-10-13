@@ -94,13 +94,14 @@ namespace TodoItTest
         [Trait("Class", "TodoSequencer")]
         public static void IncrementID()
         {
-            int i = 0;
+            TodoSequencer.reset();
+            int a = TodoSequencer.nextTodoId();
+            int i =  TodoSequencer.nextTodoId();
+            Assert.Equal(a+1, i);
             i = TodoSequencer.nextTodoId();
-            Assert.Equal(0, i);
+            Assert.Equal(a + 2, i);
             i = TodoSequencer.nextTodoId();
-            Assert.Equal(1, i);
-            i = TodoSequencer.nextTodoId();
-            Assert.Equal(2, i);
+            Assert.Equal(a + 3, i);
 
             TodoSequencer.reset();
 
@@ -131,22 +132,100 @@ namespace TodoItTest
     }
 
     public class TodoItemsClassShouldConsider
-    {
+    { 
+        //private TodoItems _todoItems;
+        //public TodoItemsClassShouldConsider()
+        //{
+        //    _todoItems = new TodoItems();
+        //    _todoItems.AddGenericTodo();
+        //    _todoItems.AddGenericTodo();
+        //    _todoItems.AddGenericTodo();
+        //    _todoItems.AddGenericTodo();
+        //    _todoItems.AddGenericTodo();
+        //}
+
+        //refactor this
         [Fact]
         [Trait("Class", "TodoItems")]
-        public static void AddGenericTodo()
+        public void AddGenericTodoAndIncrementSize()
         {
-            TodoItems todoArr = new TodoItems();
-            Assert.Equal(0, todoArr.Size());
-            Todo todo = todoArr.AddGenericTodo();
-            Assert.Equal(1, todoArr.Size());
+            TodoItems todoItems = new TodoItems();
+            todoItems.AddGenericTodo();
+            todoItems.AddGenericTodo();
+            todoItems.AddGenericTodo();
+            todoItems.AddGenericTodo();
+            todoItems.AddGenericTodo();
+            Assert.Equal(5, todoItems.Size());
+            Todo todo = todoItems.AddGenericTodo();
+            Assert.Equal(6, todoItems.Size());
 
             //Assert.Equal("Hacke", todoArr.FindById(1));
             //Assert.Equal("Hackspett", todo.LastName);
 
-            Assert.Equal(todoArr.Size(), todoArr.FindAll().Length);
-            todoArr.Clear();
-            Assert.Equal(0, todoArr.Size());
+            todoItems.Clear();
+            Assert.Equal(0, todoItems.Size());
+        }
+  
+
+        [Fact]
+        [Trait("Class", "TodoItems")]
+        public void FindByDoneStatus()
+        {
+            TodoItems todoItems1 = new TodoItems();
+            todoItems1.AddGenericTodo();
+            todoItems1.AddGenericTodo();
+            todoItems1.AddGenericTodo();
+            todoItems1.AddGenericTodo();
+            todoItems1.AddGenericTodo();
+            todoItems1.FindById(1).Done = true;
+            todoItems1.FindById(3).Done = true;
+            Todo[] found = todoItems1.FindByDoneStatus(true);
+            Assert.Equal(2, found.Length);
+        }
+
+        [Fact]
+        [Trait("Class", "TodoItems")]
+        public void FindByAssigneeID()
+        {
+            TodoItems todoItems2 = new TodoItems();
+            todoItems2.AddGenericTodo();
+            todoItems2.AddGenericTodo();
+            todoItems2.AddGenericTodo();
+            todoItems2.AddGenericTodo();
+            todoItems2.AddGenericTodo();
+            Todo[] found = todoItems2.FindByAssignee(2);
+            Assert.Single(found);
+
+        }
+        [Fact]
+        [Trait("Class", "TodoItems")]
+        public void FindByAssignee()
+        {
+            TodoItems todoItems3 = new TodoItems();
+            todoItems3.AddGenericTodo();
+            todoItems3.AddGenericTodo();
+            todoItems3.AddGenericTodo();
+            todoItems3.AddGenericTodo();
+            todoItems3.AddGenericTodo();
+            Person person = new Person(5, "Inga", "Persson");
+            todoItems3.FindById(1).Assignee = person;
+            Todo[] found = todoItems3.FindByAssignee(person);
+            Assert.Single(found);
+        }
+        [Fact]
+        [Trait("Class", "TodoItems")]
+        public static void FindUnassignedTodoItems()
+        {
+            TodoItems todoItems4 = new TodoItems();
+            todoItems4.AddGenericTodo();
+            todoItems4.AddGenericTodo();
+            todoItems4.AddGenericTodo();
+            todoItems4.AddGenericTodo();
+            todoItems4.AddGenericTodo();
+            Person person = new Person(5, "Inga", "Persson");
+            todoItems4.FindById(1).Assignee = person;
+            Todo[] found = todoItems4.FindByAssignee(person);
+            Assert.Equal(4, found.Length);
         }
     }
 }

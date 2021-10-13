@@ -1,2 +1,10 @@
 ﻿Refactor sequencers > inherit    
 
+      private TodoItems CreateFourBasicTodo()
+        {
+            TodoItems todoItems = new TodoItems();
+            Todo todo = new Todo(TodoSequencer.nextTodoId(), "Become 1337");
+            todoItems.AddToArray(todoItems.)
+
+            return todoItems;
+        }

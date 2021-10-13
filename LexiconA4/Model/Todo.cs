@@ -25,5 +25,9 @@ namespace LexiconA4.Model
         }
 
         public int TodoID => todoID;
+
+        public bool Done { get => done; set => done = value; }
+        public Person Assignee { get => assignee; set => assignee = value; }
+        public string Descripion { get => descripion; set => descripion = value; }
     }
 }
