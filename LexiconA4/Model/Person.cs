@@ -6,26 +6,26 @@ namespace LexiconA4.Model
 {
     public class Person
     {
-        private readonly int _personId;
-        private  string _firstName, _lastName;
+        private readonly int personId;
+        private  string firstName, lastName;
 
         public Person(int personId, string firstName, string lastName)
         {
-            this._personId = personId;
+            this.personId = personId;
             FirstName = firstName;
             LastName = lastName;
         }
 
-        public int PersonId => _personId;
+        public int PersonId => personId;
         public string FirstName
         {
-            get => _firstName;
-            set => _firstName = Tools.SafeString(value);
+            get => firstName;
+            set => firstName = Tools.SafeString(value);
         }
         public string LastName
         {
-            get => _lastName;
-            set => _lastName = Tools.SafeString(value);
+            get => lastName;
+            set => lastName = Tools.SafeString(value);
         }
     }
 }

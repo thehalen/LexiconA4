@@ -36,6 +36,8 @@ namespace LexiconA4.Data
         public Todo AddGenericTodo()
         {
             Todo todo = new Todo(TodoSequencer.nextTodoId(), "Become 1337");
+            Person person = new Person(PersonSequencer.nextPersonId(), "Fisk", "Fisksson");
+            todo.Assignee = person;
             AddToArray(ref todoArr, todo);
             return todo;
         }
@@ -49,7 +51,16 @@ namespace LexiconA4.Data
             Array.Resize(ref arr, arr.Length + 1);
             arr[arr.Length - 1] = todo;
         }
-        
+        /// <summary>
+        /// Adds a todo to the first free slot in the specified array
+        /// </summary>
+        /// <param name=""></param>
+        public void AddToTodoArray(Todo todo)
+        {
+            Array.Resize(ref todoArr, todoArr.Length + 1);
+            todoArr[todoArr.Length - 1] = todo;
+        }
+
         /// <summary>
         /// Removes a todo from the array
         /// </summary>
@@ -116,17 +127,10 @@ namespace LexiconA4.Data
         /// <returns></returns>
         public Todo[] FindByAssignee(Person assignee)
         {
-            Todo[] found = new Todo[0];
-            foreach (Todo t in todoArr)
-            {
-                if (t.Assignee == assignee)
-                {
-                    AddToArray(ref found, t);
-                }
-            }
-            return found;
+            return FindByAssignee(assignee.PersonId);
         }
-         
+
+
         /// <summary>
         /// Returns an array of objects that does not have an assignee set.
         /// </summary>

@@ -36,7 +36,7 @@ namespace TodoItTest
             Assert.Equal("Thomas", testPerson.FirstName);
             Assert.Equal("Anderson", testPerson.LastName);
         }
-        
+
     }
 
     public class TodoClassShouldConsider
@@ -73,11 +73,12 @@ namespace TodoItTest
         public static void IncrementID()
         {
             int i = PersonSequencer.nextPersonId();
-            Assert.Equal(0, i);
+            int v = i;
             i = PersonSequencer.nextPersonId();
-            Assert.Equal(1, i);
+            Assert.True(v < i);
+            v = i;
             i = PersonSequencer.nextPersonId();
-            Assert.Equal(2, i);
+            Assert.True(v < i);
 
             PersonSequencer.reset();
 
@@ -95,8 +96,8 @@ namespace TodoItTest
         {
             TodoSequencer.reset();
             int a = TodoSequencer.nextTodoId();
-            int i =  TodoSequencer.nextTodoId();
-            Assert.Equal(a+1, i);
+            int i = TodoSequencer.nextTodoId();
+            Assert.Equal(a + 1, i);
             i = TodoSequencer.nextTodoId();
             Assert.Equal(a + 2, i);
             i = TodoSequencer.nextTodoId();
@@ -112,16 +113,16 @@ namespace TodoItTest
 
     public class PeopleClassShouldConsider
     {
-      
+
 
         [Fact]
         [Trait("Class", "People")]
         public static void AddGenericPerson()
         {
             People people = new People();
-            Assert.Equal(0, people.Size());
+            Assert.Equal(4, people.Size());
             Person pers = people.AddGenericPerson();
-            Assert.Equal(1, people.Size());
+            Assert.Equal(5, people.Size());
 
             Assert.Equal("Hacke", pers.FirstName);
             Assert.Equal("Hackspett", pers.LastName);
@@ -146,26 +147,70 @@ namespace TodoItTest
             Assert.Equal(4, remPeople.Size());
         }
     }
+}
 
-    public class TodoItemsClassShouldConsider
-    { 
-
+namespace UnitTestA4
+{ 
+    public class TodoItemsClassShouldConsiderFixture : IDisposable
+    {
         //refactor this
+        public TodoItems _todoItems;
+        private bool disposedValue;
+
+        public TodoItemsClassShouldConsiderFixture()
+        {
+            _todoItems = new TodoItems();
+            _todoItems.AddGenericTodo();
+            _todoItems.AddGenericTodo();
+            _todoItems.AddGenericTodo();
+            _todoItems.AddGenericTodo();
+            _todoItems.AddGenericTodo();
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: dispose managed state (managed objects)
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                // TODO: set large fields to null
+                disposedValue = true;
+            }
+        }
+
+        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        // ~TodoItemsClassShouldConsiderFixture()
+        // {
+        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        //     Dispose(disposing: false);
+        // }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+    }
+    public class TodoItemsClassShouldConsider : IClassFixture<TodoItemsClassShouldConsiderFixture>
+    {
+        TodoItemsClassShouldConsiderFixture fixture;
+        public TodoItemsClassShouldConsider(TodoItemsClassShouldConsiderFixture fix)
+        {
+            this.fixture = fix;
+        }
+
         [Fact]
         [Trait("Class", "TodoItems")]
         public void AddGenericTodoAndIncrementSize()
-        {
-            TodoItems todoItems = new TodoItems();
-            todoItems.AddGenericTodo();
-            todoItems.AddGenericTodo();
-            todoItems.AddGenericTodo();
-            todoItems.AddGenericTodo();
-            todoItems.AddGenericTodo();
-            Assert.Equal(5, todoItems.Size());
-            Todo todo = todoItems.AddGenericTodo();
-            Assert.Equal(6, todoItems.Size());
-            todoItems.Clear();
-            Assert.Equal(0, todoItems.Size());
+        {            
+            Assert.Equal(4, fixture._todoItems.Size());
+            Todo todo = fixture._todoItems.AddGenericTodo();
+            Assert.Equal(5, fixture._todoItems.Size()); 
         }
   
 
@@ -173,15 +218,9 @@ namespace TodoItTest
         [Trait("Class", "TodoItems")]
         public void FindByDoneStatus()
         {
-            TodoItems todoItems1 = new TodoItems();
-            todoItems1.AddGenericTodo();
-            todoItems1.AddGenericTodo();
-            todoItems1.AddGenericTodo();
-            todoItems1.AddGenericTodo();
-            todoItems1.AddGenericTodo();
-            todoItems1.FindById(1).Done = true;
-            todoItems1.FindById(3).Done = true;
-            Todo[] found = todoItems1.FindByDoneStatus(true);
+            fixture._todoItems.FindById(1).Done = true;
+            fixture._todoItems.FindById(3).Done = true;
+            Todo[] found = fixture._todoItems.FindByDoneStatus(true);
             Assert.Equal(2, found.Length);
         }
 
@@ -189,61 +228,35 @@ namespace TodoItTest
         [Trait("Class", "TodoItems")]
         public void FindByAssigneeID()
         {
-            TodoItems todoItems2 = new TodoItems();
-            todoItems2.AddGenericTodo();
-            todoItems2.AddGenericTodo();
-            todoItems2.AddGenericTodo();
-            todoItems2.AddGenericTodo();
-            todoItems2.AddGenericTodo();
-            Todo[] found = todoItems2.FindByAssignee(2);
+            Todo[] found = fixture._todoItems.FindByAssignee(2);
             Assert.Single(found);
-
         }
         [Fact]
         [Trait("Class", "TodoItems")]
         public void FindByAssignee()
-        {
-            TodoItems todoItems3 = new TodoItems();
-            todoItems3.AddGenericTodo();
-            todoItems3.AddGenericTodo();
-            todoItems3.AddGenericTodo();
-            todoItems3.AddGenericTodo();
-            todoItems3.AddGenericTodo();
-            Person person = new Person(5, "Inga", "Persson");
-            todoItems3.FindById(1).Assignee = person;
-            Todo[] found = todoItems3.FindByAssignee(person);
+        { 
+            Person testPerson = fixture._todoItems.FindById(3).Assignee;
+            Todo[] found = fixture._todoItems.FindByAssignee(testPerson);
             Assert.Single(found);
         }
         [Fact]
         [Trait("Class", "TodoItems")]
         public void FindUnassignedTodoItems()
         {
-            TodoItems todoItems4 = new TodoItems();
-            todoItems4.AddGenericTodo();
-            todoItems4.AddGenericTodo();
-            todoItems4.AddGenericTodo();
-            todoItems4.AddGenericTodo();
-            todoItems4.AddGenericTodo();
-            Person person = new Person(5, "Inga", "Persson");
-            todoItems4.FindById(1).Assignee = person;
-            Todo[] found = todoItems4.FindByAssignee(person);
+            fixture._todoItems.FindById(2).Assignee = null;
+            Todo[] found = fixture._todoItems.FindUnassignedTodoItems();
             Assert.Single(found);
         }
         [Fact]
         [Trait("Class", "TodoItems")]
         public void RemoveATodo()
         {
-            TodoItems todoItems4 = new TodoItems();
-            todoItems4.AddGenericTodo();
-            todoItems4.AddGenericTodo();
-            todoItems4.AddGenericTodo();
-            todoItems4.AddGenericTodo();
-            todoItems4.AddGenericTodo();
-            Person person = new Person(5, "Inga", "Persson");
-            todoItems4.FindById(1).Assignee = person;
-            Todo[] found = todoItems4.FindByAssignee(person);
-            todoItems4.RemoveFromArray(found[0]);
-            Assert.Equal(4, todoItems4.Size());
+            Person person = new Person(PersonSequencer.nextPersonId(), "Inga", "Persson");
+            fixture._todoItems.FindById(2).Assignee = person;
+            Todo[] found = fixture._todoItems.FindByAssignee(person.PersonId);
+            fixture._todoItems.RemoveFromArray(found[0]);
+            Assert.Equal(4, fixture._todoItems.Size());
         }
+
     }
 }
